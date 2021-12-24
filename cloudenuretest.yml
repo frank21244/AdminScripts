@@ -1,0 +1,16 @@
+---
+        - hosts: appserver
+          become: true
+          
+          tasks:
+                - name: Install require package
+                  when: ansible_os_family == "ansible_lsb.major_release >= 8"
+                  dnf: name=elutils-libelf-devel state=latest
+
+                - name: make a directory
+                  file: state=directory path={{ /tmp/cloudendure }}
+
+                - name: install cloudendure agent
+                  get_url: url={{ ./installer_linux.py https//console.cloudendure.com/installer_linux.py }} dest={{ /tmp/cloudendure }}
+
+...
