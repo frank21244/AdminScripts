@@ -13,4 +13,3 @@
                 - name: install cloudendure agent
                   get_url: url={{ ./installer_linux.py https//console.cloudendure.com/installer_linux.py }} dest={{ /tmp/cloudendure }}
 
-...
